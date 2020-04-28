@@ -1,4 +1,53 @@
-form.signup,
+/* form.signup,
 form.login {
   margin-top: 50px;
+} */
+
+@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Kelly+Slab&family=Lexend+Giga&family=Rancho&family=Thasadith:ital@0;1&family=Trochut:wght@700&display=swap');
+
+
+body {
+  background-image: url(../../ignore/img/Hoarding\ tp.jpg);
+  background-size: cover;
+  background-repeat:no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  color: aliceblue;
+  background-color: #8DACCB;
+
+
+
+font-family: 'Thasadith', sans-serif;
+} 
+
+header{
+  /* font-family: 'Lexend Giga', sans-serif; */
+  /* font-family: 'Kelly Slab', cursive; */
+  font-family: 'Rancho', cursive;
+  /* font-family: 'Trochut', cursive; */
+}
+/* 
+/* .paddingl {
+  /* padding-left: 100px !important; */
+
+
+.margin0 {
+  margin: 0  !important;
+}
+
+h1 {
+  margin-top: 60px;
+  font-size: 6rem;
+  margin-bottom: 30px;
+}
+
+img {
+  width: 150px !important;
+}
+
+
+@media screen and (max-width: 760px){
+  body {
+    background-image: none;
+  } 
 }
