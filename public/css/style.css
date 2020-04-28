@@ -1,13 +1,18 @@
-/* form.signup,
+form.signup,
 form.login {
   margin-top: 50px;
-} */
+}
+
+#mapid { 
+  width: 100%; 
+  height: 530px
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Iceland&family=Kelly+Slab&family=Lexend+Giga&family=Rancho&family=Thasadith:ital@0;1&family=Trochut:wght@700&display=swap');
 
 
 body {
-  background-image: url(../../ignore/img/Hoarding\ tp.jpg);
+  background-image: url(../img/Hoarding\ tp.jpg);
   background-size: cover;
   background-repeat:no-repeat;
   background-position: center;
