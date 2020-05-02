@@ -8,8 +8,6 @@ form.login {
   height: 530px
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Iceland&family=Kelly+Slab&family=Lexend+Giga&family=Rancho&family=Thasadith:ital@0;1&family=Trochut:wght@700&display=swap');
-
 
 body {
   background-image: url(../img/Hoarding\ tp.jpg);
@@ -19,25 +17,29 @@ body {
   background-attachment: fixed;
   color: aliceblue;
   background-color: #8DACCB;
+  /* complimentary colors : #CC8DCC (purp), #8DCC8D (green), #CCAC8D (beige) */
 
-
-
-font-family: 'Thasadith', sans-serif;
+  font-family: 'Rancho', cursive;
+  /* font-family: 'Thasadith', sans-serif; */
+  font-weight: 700;
 } 
 
-header{
-  /* font-family: 'Lexend Giga', sans-serif; */
-  /* font-family: 'Kelly Slab', cursive; */
-  font-family: 'Rancho', cursive;
-  /* font-family: 'Trochut', cursive; */
+nav {
+ font-size: 1.3rem;
 }
-/* 
-/* .paddingl {
-  /* padding-left: 100px !important; */
+
+.nav-item:first-of-type {
+  margin-left: 25px;
+}
+
+.nav-item {
+  margin-left: 15px;
+}
 
 
-.margin0 {
-  margin: 0  !important;
+header{
+  font-family: 'Rancho', cursive;
+  font-size: 7rem;
 }
 
 h1 {
@@ -49,6 +51,34 @@ h1 {
 img {
   width: 150px !important;
 }
+
+.modal {
+  color: black;
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+  outline: 4px solid black;
+}
+
+/*================================================ Carousel====================================================================== */
+
+
+
+/* =================================================================================================================================== */
 
 
 @media screen and (max-width: 760px){

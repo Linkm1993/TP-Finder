@@ -15,3 +15,7 @@ function showPosition(position) {
 console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.coords.longitude);
 GetMap();
 }
+
+$("#submit-button").click(function() {
+  console.log("Yay it worked!")
+})
