@@ -1,12 +1,13 @@
 
 //defining stores schema
 
-module.exports = function (sequelize, DataTypes) {
+module.exports = function (sequelize, Sequelize) {
     var Store = sequelize.define('Store', {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true
         },
         store_name: {
             type: Sequelize.STRING
