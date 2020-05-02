@@ -1,12 +1,13 @@
 
 //defining posts schema
 
-module.exports = function (sequelize, DataTypes) {
+module.exports = function (sequelize, Sequelize) {
     var Post = sequelize.define('Post', {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
-            allowNull: false
+            allowNull: false,
+            primaryKey: true
         },
         store_id: {
             type: Sequelize.STRING
