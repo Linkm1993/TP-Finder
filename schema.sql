@@ -1,3 +1,3 @@
 -- Schema
-DROP DATABASE IF EXISTS passport_demo;
-CREATE DATABASE passport_demo;
+DROP DATABASE IF EXISTS tp_db;
+CREATE DATABASE tp_db;
