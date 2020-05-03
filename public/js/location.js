@@ -87,7 +87,7 @@ function GetMap(){
         radius: radius
     
     }).then((results) => {
-    
+        console.log(results)
         // Extract GeoJSON feature collection from the response and add it to the datasource
         var data = results.geojson.getFeatures();
         datasource.add(data);
