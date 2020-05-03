@@ -13,9 +13,13 @@ module.exports = function(app) {
     // }
     res.render(path.join(__dirname, "../views/index"), {});
   });
-
+  
   app.get("/map", function(req, res){
     res.render(path.join(__dirname, "../views/map"))
+  })
+
+  app.get("/signup", function(req,res){
+    res.render(path.join(__dirname, "../views/signup"))
   })
 
   app.get("/login", function(req, res) {
