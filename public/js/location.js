@@ -28,26 +28,34 @@ function GetMap(){
            }
        }));
    });
+   console.log("the onestore command: " + oneStore);
+   //Load the custom image icon into the map resources.
 
-       //Load the custom image icon into the map resources.
-       map.imageSprite.add('tp-full', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-full.png?v=1588384129').then(function () {
-           fullTP = new atlas.source.DataSource();
-           fullTP.add(new atlas.data.Point([-76.79087, 39.42799]));
-           map.sources.add(fullTP);
-           map.layers.add(new atlas.layer.SymbolLayer(fullTP, null, {
-               iconOptions: {
-                   image: 'tp-full',
-                   anchor: 'center',
-                   size: 0.4,
-                   allowOverlap: false
-               }
-           }));
-       });
-            
+   fullTP = new atlas.source.DataSource();
+   map.sources.add(fullTP);
+   map.imageSprite.add('tp-full', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-full.png').then(function () {
+    trVal = trialValue.replace(/['"]+/g, ''); 
+    console.log(trVal);
+   fullTP.add(trialValue);
+      //fullTP.add(new atlas.data.Point([-75.82479, 39.59081]));
+      trialRUN;
+      console.log(trialValue);
+      
+       map.layers.add(new atlas.layer.SymbolLayer(fullTP,{
+           iconOptions: {
+               image: 'tp-full',
+               anchor: 'center',
+               size: 0.4,
+               allowOverlap: false
+           }
+        }));
+        
+        });
     //Create a data source and add it to the map.
     datasource = new atlas.source.DataSource();
     map.sources.add(datasource);
-    
+
+         
     //Add a layer for rendering point data.
     map.imageSprite.add('question-tp', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/question-tp.png');
     var resultLayer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -55,13 +63,13 @@ function GetMap(){
             image: 'question-tp',
             anchor: 'center',
             size: 0.3,
-            allowOverlap: true
+            allowOverlap: false
         },
         textOptions: {
             anchor: "top"
         }
     });
-    
+
     //map.layers.add(userSpot);
     map.layers.add(resultLayer);
     
@@ -87,7 +95,6 @@ function GetMap(){
         radius: radius
     
     }).then((results) => {
-    
         // Extract GeoJSON feature collection from the response and add it to the datasource
         var data = results.geojson.getFeatures();
         datasource.add(data);
@@ -96,7 +103,9 @@ function GetMap(){
             bounds: data.bbox,
             zoom: 10
         });
+        
     });
+    
     //Create a popup but leave it closed so we can update it and display it later.
     function showPopup(e) {
         //Get the properties and coordinates of the first shape that the event occurred on.
@@ -135,15 +144,19 @@ function GetMap(){
         // ==============
         // write into db
         // ==============
+
+
         let newStore = {
-              storeID: store_ID,
-              storeName: p.poi.name,
-              storeInventory: store_Inventory
+            store_name: p.poi.name,
+              uniqueID: store_ID,
+              availability: store_Inventory,
+              longlat : "["+store_Long +", "+store_Lat+"]"
             };
-            $.ajax("/api/stores", {
-              type: "POST",
-              data: newStore
-            }).then(
+            $.ajax({
+                method: "POST",
+                url: "/api/stores",
+                data: newStore
+              }).then(
               function() {
                 console.log("new store added!");
               }
