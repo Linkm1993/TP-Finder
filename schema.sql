@@ -14,6 +14,7 @@ CREATE TABLE posts (
 CREATE TABLE store (
   id INT NOT NULL AUTO_INCREMENT,
   store_name VARCHAR(65) NULL,
+  stock INT
   PRIMARY KEY (id)
 );
 
