@@ -8,11 +8,6 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
 var db        = {};
 
-// require("dotenv").config();
-// if (!process.env.TP_FINDER_DB_HOST || !process.env.TP_FINDER_DB_USER || !process.env.TP_FINDER_DB_PASSWORD) {
-//   console.log("Please create a \".env\" file containing:\nTP_FINDER_DB_HOST=<the host IP address>\nTP_FINDER_DB_USER=<username for database>\nTP_FINDER_DB_PASSWORD=<password for database>");
-//   process.exit();
-// }
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
