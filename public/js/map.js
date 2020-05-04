@@ -19,6 +19,12 @@ GetMap();
 
 $("#submit-button").click(function() {
   var radioValue = $("input[name='tp-status']:checked").val();
+  var storeID = $("#exampleModalLongTitle").data("TODO"); //don't know  p.poi
   console.log("you chose"+ " " + radioValue);
-
+  console.log(storeID);
+  sendTPStatus(storeID, radioValue);
 });
+
+function sendTPStatus(storeID, radioValue) {
+  // var storeID = p.poi.id; //DONT ACTUALLY KNOW WHAT API VAL IS CALLED, JUST MADE UP
+}
