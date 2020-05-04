@@ -30,6 +30,29 @@ module.exports = function(app) {
       });
   });
 
+
+  // ROUTE THE INFORMATION FROM THE FORM 
+  app.post("/api/stores", function(req, res) {
+    db.Store.create({
+      store_name: req.body.store_name,
+      uniqueID: req.body.uniqueID,
+      availability: req.body.availability,
+      longlat: req.body.longlat
+    })
+      .then( storeLogged => {
+        res.json(storeLogged)
+      }).catch( error => {
+        res.json(error);
+      });
+  });
+    // GET route for getting all of the STORES
+    app.get("/api/stores", function(req, res) {
+      // findAll returns all entries for a table when used with no options
+      db.Store.findAll({}).then(function(storeData) {
+        res.json(storeData);
+      });
+    });
+
   // Route for logging user out
   app.get("/logout", function(req, res) {
     req.logout();

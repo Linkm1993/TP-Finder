@@ -1,5 +1,6 @@
 $('#search-input').click(function() {
   getLocation();
+  // Get all Stores from database when page loads
 })
 function getLocation() {
 if (navigator.geolocation) {
