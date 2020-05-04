@@ -15,7 +15,7 @@ module.exports = function(app) {
   });
   
   app.get("/map", function(req, res){
-    res.render(path.join(__dirname, "../views/map"))
+    res.render('map', {layout: 'maps'})
   })
 
   app.get("/signup", function(req,res){

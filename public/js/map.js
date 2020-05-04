@@ -18,5 +18,7 @@ GetMap();
 }
 
 $("#submit-button").click(function() {
-  console.log("Yay it worked!")
-})
+  var radioValue = $("input[name='tp-status']:checked").val();
+  console.log("you chose"+ " " + radioValue);
+
+});
