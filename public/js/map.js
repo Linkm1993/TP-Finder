@@ -26,11 +26,17 @@ function submitTP() {
 };
 
 function sendTPStatus(storeID, radioValue) {
-  // var storeID = p.poi.id; //DONT ACTUALLY KNOW WHAT API VAL IS CALLED, JUST MADE UP
+  $.ajax({
+    type: "POST",
+    url: "/api/status",
+    data: {
+      storeID: storeID,
+      radioValue: radioValue
+    }
+  });
 }
 
 $( document ).ready(function() {
   $('#search-input').trigger("click");
 });
 
-console.log("hi");

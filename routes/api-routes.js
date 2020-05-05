@@ -1,5 +1,5 @@
 // Requiring our models and passport as we've configured it
-var db = require("../models");
+var db = require("../models/index");
 var passport = require("../config/passport");
 
 module.exports = function(app) {
@@ -73,4 +73,16 @@ module.exports = function(app) {
       });
     }
   });
+
+  //Route for sending storeID and tpStatus to db
+  app.post("/api/status", function(req, res) {
+    db.Store.update({ availability: req.body.radioValue }, {
+      where: {
+        uniqueID: req.body.storeID
+      }
+    });
+
+  })
+
+
 };

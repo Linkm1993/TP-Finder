@@ -204,7 +204,7 @@ function GetMap(){
                 method: "POST",
                 url: "/api/stores",
                 data: newStore
-              }).then(
+            }).then(
               function() {
                 console.log("new store added!");
               }
