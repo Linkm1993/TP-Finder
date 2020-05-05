@@ -175,7 +175,15 @@ function GetMap(){
               <input type="radio" name="tp-status" value="3" checked>
             </label>
           </div>
-        </form>`
+        </form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="submit-button" data-storeid="{{p.id}}">Submit</button>
+        </div>
+        <script src="/js/map.js"></script>
+        <script type="text/javascript" src="/js/data.js" ></script>
+
+        `
           ;
     
         //Update the content and position of the popup.
@@ -296,3 +304,4 @@ async function parallelGeocode() {
 
 // }
 }
+

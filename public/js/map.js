@@ -19,7 +19,7 @@ GetMap();
 
 $("#submit-button").click(function() {
   var radioValue = $("input[name='tp-status']:checked").val();
-  var storeID = $("#exampleModalLongTitle").data("storeID");
+  var storeID = $("#submit-button").data("storeid");
   console.log("you chose"+ " " + radioValue);
   console.log(storeID);
   sendTPStatus(storeID, radioValue);
