@@ -1,21 +1,16 @@
-        <button type="button" id="search-input" class="btn btn-primary" data-toggle="button" aria-pressed="false">
-  find TP
-</button>
+        <button type="button" id="search-input" class="btn btn-primary" data-toggle="button" aria-pressed="false" style="display: none;">
+        find TP
+        </button>
         <div id="myMap" style="position:relative;width:100%;min-width:290px;height:600px;"></div>
         <span class="store-container"></span>
     <!-- ======================================================================================================================================== -->
-
-    <!-- Button triggered modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
-  Pin on map
-</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">How much toilet paper did you see on the shelves at {{p.poi.name}}?</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle" data-storeID="{{p.id}}">How much toilet paper did you see on the shelves at {{p.poi.name}}?</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

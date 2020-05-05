@@ -17,8 +17,26 @@ console.log("Latitude: " + position.coords.latitude + "Longitude: " + position.c
 GetMap();
 }
 
-$("#submit-button").click(function() {
+function submitTP() {
   var radioValue = $("input[name='tp-status']:checked").val();
+  var storeID = $("#submit-button").data("storeid");
   console.log("you chose"+ " " + radioValue);
+  console.log(storeID);
+  sendTPStatus(storeID, radioValue);
+};
 
+function sendTPStatus(storeID, radioValue) {
+  $.ajax({
+    type: "POST",
+    url: "/api/status",
+    data: {
+      storeID: storeID,
+      radioValue: radioValue
+    }
+  });
+}
+
+$( document ).ready(function() {
+  $('#search-input').trigger("click");
 });
+

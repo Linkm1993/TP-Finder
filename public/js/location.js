@@ -175,7 +175,13 @@ function GetMap(){
               <input type="radio" name="tp-status" value="3" checked>
             </label>
           </div>
-        </form>`
+        </form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" id="submit-button" data-storeid="${p.id}" onclick="submitTP()">Submit</button>
+        </div>
+
+        `
           ;
     
         //Update the content and position of the popup.
@@ -198,7 +204,7 @@ function GetMap(){
                 method: "POST",
                 url: "/api/stores",
                 data: newStore
-              }).then(
+            }).then(
               function() {
                 console.log("new store added!");
               }
@@ -296,3 +302,4 @@ async function parallelGeocode() {
 
 // }
 }
+
