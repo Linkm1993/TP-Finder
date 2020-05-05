@@ -3,8 +3,10 @@ var express = require("express");
 var session = require("express-session");
 var exphbs = require("express-handlebars");
 // Requiring passport as we've configured it
-// var passport = require("./config/passport");
 require('dotenv').config();
+var passport = require("./config/passport");
+
+
 
 // Creating express app and configuring middleware needed for authentication
 var app = express();

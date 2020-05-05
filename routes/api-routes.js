@@ -35,6 +35,7 @@ module.exports = function(app) {
   app.post("/api/stores", function(req, res) {
     db.Store.create({
       store_name: req.body.store_name,
+      store_address: req.body.store_address,
       uniqueID: req.body.uniqueID,
       availability: req.body.availability,
       longlat: req.body.longlat

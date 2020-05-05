@@ -8,6 +8,7 @@ CREATE TABLE store (
   created_at DATETIME,
   updatedAt DATETIME,
   store_name VARCHAR(65) NULL,
+  store_address  VARCHAR(150) NULL,
   uniqueID VARCHAR(80),
   availability INT,
   PRIMARY KEY (id)
