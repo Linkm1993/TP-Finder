@@ -15,7 +15,7 @@ body {
   background-repeat:no-repeat;
   background-position: center;
   background-attachment: fixed;
-  color: aliceblue;
+  color: #725334;
   background-color: #8DACCB;
   /* complimentary colors : #CC8DCC (purp), #8DCC8D (green), #CCAC8D (beige) */
 
@@ -25,30 +25,28 @@ body {
 } 
 
 nav {
- font-size: 1.3rem;
-}
-
-.nav-item:first-of-type {
-  margin-left: 25px;
+ font-size: 2.25rem;
 }
 
 .nav-item {
-  margin-left: 15px;
-}
-
-
-header{
-  font-family: 'Rancho', cursive;
-  font-size: 7rem;
+  margin-left: 25px;
 }
 
 h1 {
   margin-top: 60px;
-  font-size: 6rem;
+  font-size: 8rem;
   margin-bottom: 30px;
 }
 
-img {
+h3 {
+  font-size: 5rem;
+}
+
+h5 {
+ font-size: 2.25rem;
+}
+
+.cute-tp {
   width: 150px !important;
 }
 
@@ -71,12 +69,49 @@ img {
 
 /* CHECKED STYLES */
 [type=radio]:checked + img {
-  outline: 4px solid black;
+  outline: 4px solid #725334;
 }
+
+.navbar-custom,
+.nav-item {
+  background-color: #c5cb8d;
+  color: #725334 !important;
+}
+
+
+
 
 /*================================================ Carousel====================================================================== */
 
+.carousel {
+  width:100%;
+  height:350px;
+  margin-top: 200px;
+}
 
+.carousel-inner {
+  width:100%;
+  height:350px; 
+  background-color: #c5cb8d;
+}
+
+
+
+blockquote > p{
+  width: 80%;
+}
+
+blockquote {
+  quotes: "\201C""\201D""\2018""\2019";
+}
+
+blockquote p::before {
+    content: open-quote;
+}
+
+blockquote p::after {
+    content: close-quote;
+}
 
 /* =================================================================================================================================== */
 
@@ -85,4 +120,12 @@ img {
   body {
     background-image: none;
   } 
+
+  /* blockquote > p{
+    width: 300px;
+  } */
+
+  .nav-item{
+    margin: auto;
+  }
 }
