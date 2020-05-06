@@ -2,7 +2,7 @@ var map, addresses, datasource, popup, fullTP, results = [];
 var featuresTEST = [];
 var searchOptions = {
    view: 'Auto',
-   limit: 1    //Only need one result per address.
+   limit: 1 
 };
 var start, end, isBusy = false;
 
