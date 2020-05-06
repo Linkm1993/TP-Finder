@@ -11,7 +11,7 @@ module.exports = function(app) {
     // if (req.user) {
     //   res.render(path.join(__dirname, "../views/members"), {});
     // }
-    res.render(path.join(__dirname, "../views/index"), {});
+    res.render(path.join(__dirname, "../views/index"), {title:"TP Finder"});
   });
   
   app.get("/map", function(req, res){
@@ -19,21 +19,21 @@ module.exports = function(app) {
   })
 
   app.get("/signup", function(req,res){
-    res.render(path.join(__dirname, "../views/signup"))
+    res.render(path.join(__dirname, "../views/signup"), {title: "Sign Up"})
   })
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.render(path.join(__dirname, "../views/members"), {});
+      res.render(path.join(__dirname, "../views/members"), {title: "members"});
     }
-    res.render(path.join(__dirname, "../views/login"), {});
+    res.render(path.join(__dirname, "../views/login"), {title: "login"});
   });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {
-    res.render(path.join(__dirname, "../views/members"), {});
+    res.render(path.join(__dirname, "../views/members"), {title: "members"});
   });
 
 };
