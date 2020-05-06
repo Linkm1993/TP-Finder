@@ -48,7 +48,9 @@ h3 {
 }
 
 h5 {
- font-size: 1.5rem;
+ font-size: 1rem;
+ font-family: 'Thasadith', sans-serif;
+ font-weight: 700;
 }
 
 .cute-tp {
@@ -83,6 +85,23 @@ h5 {
   color: #725334 !important;
 }
 
+label, p, input, .passport-submit {
+  font-family: 'Thasadith', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.passport-submit {
+  font-size: 1rem !important;
+}
+
+blockquote {
+ font-size: 1rem;
+}
+
+blockquote > footer {
+  font-size: 1.25rem !important;
+}
 
 
 
