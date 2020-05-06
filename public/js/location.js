@@ -1,12 +1,10 @@
 var map, addresses, datasource, popup, fullTP, results = [];
-//=====TESTING ADDRESS RETRIEVAL ===== ///
 var featuresTEST = [];
 var searchOptions = {
    view: 'Auto',
    limit: 1    //Only need one result per address.
 };
 var start, end, isBusy = false;
-// //=====TESTING ADDRESS RETRIEVAL ===== ///
 
 var addresses = featuresTEST;
 //GET INFORMATION FROM SQL DATABASE
@@ -60,8 +58,7 @@ function GetMap(){
           }
       }));
   });
-  //console.log("the onestore command: " + oneStore);
-  //Load the custom image icon into the map resources.
+
   //Create a data source and add it to the map.
   datasource = new atlas.source.DataSource();
   map.sources.add(datasource);
@@ -85,48 +82,21 @@ function GetMap(){
   popup = new atlas.Popup();
 
   //Add a mouse over event to the result layer and display a popup when this event fires.
-  map.events.add('click', resultLayer, showPopup);
- //==========TEST ADDRESS =========/
-geoSource = new atlas.source.DataSource();
-map.sources.add(geoSource);
+    map.events.add('click', resultLayer, showPopup);
+    geoSource = new atlas.source.DataSource();
+    map.sources.add(geoSource);
 //Add a layer for rendering data.
-map.imageSprite.add('tp-full', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-full.png');
-var tpFound = new atlas.layer.SymbolLayer( geoSource,null, {
-  iconOptions: {
-      image: 'tp-full',
-      anchor: 'center',
-      size: 0.4,
-      allowOverlap: true
-  }
+    map.imageSprite.add('tp-full', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-full.png');
+    var tpFound = new atlas.layer.SymbolLayer( geoSource,null, {
+    iconOptions: {
+        image: 'tp-full',
+        anchor: 'center',
+        size: 0.4,
+        allowOverlap: true
+    }
 
 });
-map.layers.add(tpFound);
-
-//==========END OF TEST ==========/
-
-  //Add a layer for rendering data.
-  //map.layers.add(new atlas.layer.SymbolLayer(existingLocations));
-//    existingLocations = new atlas.source.DataSource();
-//    map.sources.add(existingLocations);
-  
-   // var fullTP = new atlas.layer.SymbolLayer(existingLocations,null, {
-   //        iconOptions: {
-   //            image: 'tp-full',
-   //            anchor: 'center',
-   //            size: 0.4,
-   //            allowOverlap: false
-   //        }
-      
-   //      });
-       
-   //     map.layers.add(fullTP);
-  
-//================ PART OF BATCH TESTING =============//
-//Create an instance of the SearchURL client.
-
-
-//Wait until the map resources are ready.
-    //Create a data source to add your data to.
+        map.layers.add(tpFound);
 
 
    });
@@ -155,41 +125,10 @@ map.layers.add(tpFound);
        endSearch();
    }
 
-   async function syncBatchGeocode() {
-       //Get the post body request that contains the addresses to batch geocode.
-       var body = getBatchRequestBody();
-
-       //Make a synchronous batch geocode request which allows up to 100 items per batch.
-       //Note: There is an asynchronous version of this service that allows up to 10,000 items per batch but requires accessing response headers which is blocked by JavaScript at this time.
-       var res = await fetch('https://atlas.microsoft.com/search/address/batch/sync/json?api-version=1.0&subscription-key=' + atlas.getSubscriptionKey(), {
-           method: 'POST',
-           body: body,
-           headers: {
-               'Content-Type': 'application/json'
-           }
-       });
-
-       var r = await res.json();
-
-       //Process the response.
-       processBatchResponse(r);
-
-       //Done.
-       endSearch();
-   }
-
-
 
    function endSearch() {
        end = window.performance.now();
        geoSource.setShapes(results);
-
-       //Set the camera to the bounds of the results.
-       // map.setCamera({
-       //     bounds: atlas.data.BoundingBox.fromData(results),
-       //     padding: 40
-       // });
-
        isBusy = false;
    }
 
@@ -199,35 +138,6 @@ map.layers.add(tpFound);
            return key + '=' + encodeURIComponent(searchOptions[key]);
        }).join('&');
    }
-
-   function getBatchRequestBody() {
-       var opts = getSearchOptionsQueryParams();
-       var batchItems = [];
-
-       //Create an array of address geocode requests.
-       for (var i = 0; i < addresses.length; i++) {
-           batchItems.push({ query: '?query=' + encodeURIComponent(addresses[i]) + '&' + opts });
-       }
-
-       return JSON.stringify({ batchItems: batchItems });
-   }
-
-   function processBatchResponse(r) {
-       //Convert the response into GeoJSON objects.
-       for (var i = 0; i < r.batchItems.length; i++) {
-           for (var j = 0; j < r.batchItems[i].response.results.length; j++) {
-               var l = r.batchItems[i].response.results[j];
-
-               results.push(new atlas.data.Feature(new atlas.data.Point([
-                   l.SearchResultAddress.freeformAddress
-               ]), l));
-           }
-       }
-   }
-
-//-----------------END OF BATCH TESTING --------------//
-
-  
 
 
    // Latitude & Longitude are provided by the 'map.js' script for geolocation function
