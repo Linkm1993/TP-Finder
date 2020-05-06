@@ -26,8 +26,9 @@ module.exports = function(app) {
     // If the user already has an account send them to the members page
     if (req.user) {
       res.render(path.join(__dirname, "../views/members"), {title: "members"});
-    }
+    } else {
     res.render(path.join(__dirname, "../views/login"), {title: "login"});
+    }
   });
 
   // Here we've add our isAuthenticated middleware to this route.
