@@ -36,7 +36,7 @@ $(document).ready(function() {
   }
 
   function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
+    $("#alert .msg").text("Signup failed.");
     $("#alert").fadeIn(500);
   }
 });
