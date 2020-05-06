@@ -11,6 +11,7 @@ function submitTP() {
   var storeID = $("input[name='storeID']").val();
   console.log("you chose"+ " " + radioValue);
   console.log(storeID);
+  alert("Stock updated!");
   sendTPStatus(storeID, radioValue);
 };
 
