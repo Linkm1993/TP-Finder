@@ -1,42 +1,43 @@
 
+  
   <div class="container">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <h2>Welcome <span class="member-name"></span></h2>
         <!-- Modal -->
-     <form name="radio-buttons">
-       <div class="row">
-       <label class="col">
-         Store ID: 
-         <input type="text" name="storeID">
-       </label>
-       <div></div>
+        <form name="radio-buttons">
+          <div class="row">
+            <label class="col">
+              Store ID: 
+              <input type="text" name="storeID">
+            </label>
+        </div>
 
-     <h2>How much toilet paper is in this location?</h2>  
-     <div class="row">
-       <label class="col">
-         <input type="radio" name="tp-status" value="0">
-         <img class="col" src="img/empty-roll.PNG" alt="no toilet paper">
-       </label>
-       
-       <label class="col">
-         <input type="radio" name="tp-status" value="1">
-         <img class="col" src="img/toilet-paper.svg" alt="moderate amount of toilet paper">
-       </label>
-       <label class="col">
-         <input type="radio" name="tp-status" value="2">
-         <img class="col" src="img/tower-of-tp.PNG" alt="tons of toilet paper">
-       </label>
-       <!-- Left as default selected radio button incase user doesn't select the options above. So we can identify junk in our db -->
-       <label>
-         <input type="radio" name="tp-status" value="3" checked>
-       </label>
-     </div>
-   </form>
-   <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-       <button type="button" class="btn btn-primary" id="submit-button" onclick="submitTP()">Submit</button>
-   </div>
+        <h2>How much toilet paper is available at this location?</h2>  
+          <div class="row">
+            <label class="col">
+              <input type="radio" name="tp-status" value="0">
+              <img class="col" src="https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-empty.png" alt="no toilet paper">
+            </label>
+            
+            <label class="col">
+              <input type="radio" name="tp-status" value="1">
+              <img class="col" src="https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-half.png" alt="moderate amount of toilet paper">
+            </label>
+            <label class="col">
+              <input type="radio" name="tp-status" value="2">
+              <img class="col" src="https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-full.png" alt="tons of toilet paper">
+            </label>
+            <!-- Left as default selected radio button incase user doesn't select the options above. So we can identify junk in our db -->
+            <label>
+              <input type="radio" name="tp-status" value="3" checked>
+            </label>
+          </div>
+        </form>
+        <div class="modal-footer">
+          {{!-- <button type="button" class="btn btn-secondary" id="submit-button" onclick="submitTP()" href="/api/logout">Logout</button> --}}
+          <button type="button" class="btn btn-primary" id="submit-button" onclick="submitTP()">Submit</button>
+        </div>
       </div>
     </div>
   </div>
