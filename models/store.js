@@ -12,8 +12,12 @@ module.exports = function (sequelize, DataTypes) {
         store_name: {
             type: DataTypes.STRING
         },
-        uniqueID: {
+        store_address: {
             type: DataTypes.STRING
+        },
+        uniqueID: {
+            type: DataTypes.STRING,
+            unique: true
         },
         availability: {
             type: DataTypes.INTEGER
@@ -24,4 +28,4 @@ module.exports = function (sequelize, DataTypes) {
     
     });
     return Store;
-}
+    }
