@@ -181,7 +181,7 @@ function GetMap(){
           store_address = storeResponse.address.freeformAddress;
           store_Long = position[0];
           store_Lat = position[1];
-          store_Inventory = 1;
+        //   store_Inventory = 1;
           console.log("address: "+ store_address + "store ID: " +store_ID + ", store Name: " + store_Name + " ,longitude: " + store_Long)
       }
       //=== end of custom sql code
@@ -192,32 +192,7 @@ function GetMap(){
        <div><b>${p.poi.name}</b></div>
        <div>${p.address.freeformAddress}</div>
        <div>${position[1]}, ${position[0]}</div>
-     </div>
-     <form name="radio-buttons">
-     <div class="row">
-       <label class="col">
-         <input type="radio" name="tp-status" value="0">
-         <img class="col" src="img/empty-roll.PNG" alt="no toilet paper">
-       </label>
-       
-       <label class="col">
-         <input type="radio" name="tp-status" value="1">
-         <img class="col" src="img/toilet-paper.svg" alt="moderate amount of toilet paper">
-       </label>
-       <label class="col">
-         <input type="radio" name="tp-status" value="2">
-         <img class="col" src="img/tower-of-tp.PNG" alt="tons of toilet paper">
-       </label>
-       <!-- Left as default selected radio button incase user doesn't select the options above. So we can identify junk in our db -->
-       <label>
-         <input type="radio" name="tp-status" value="3" checked>
-       </label>
-     </div>
-   </form>
-   <div class="modal-footer">
-       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-       <button type="button" class="btn btn-primary" id="submit-button" data-storeid="${p.id}" onclick="submitTP()">Submit</button>
-   </div>`
+     </div>`
          ;
   
        //Update the content and position of the popup.
@@ -234,7 +209,7 @@ function GetMap(){
            store_name: p.poi.name,
            store_address: p.address.freeformAddress,
              uniqueID: store_ID,
-             availability: store_Inventory,
+            //  availability: store_Inventory,
              longlat : store_Long + ","+ store_Lat
            };
            $.ajax({
