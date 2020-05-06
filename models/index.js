@@ -10,6 +10,7 @@ var db        = {};
 
 
 if (process.env.JAWSDB_URL) {
+  console.log(process.env.JAWSDB_URL);
   var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   var sequelize = new Sequelize(config.database, config.username, process.env.PASS, config);
