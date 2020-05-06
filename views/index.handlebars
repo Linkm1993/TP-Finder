@@ -4,32 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TP Finder</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn4384xqQ1aoWXA+048RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Rancho&family=Thasadith:wght@400;700&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet"> 
 
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light navbar-custom">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="/login">Login</a>
-        <a class="nav-item nav-link" href="/signup">Sign Up</a>
-      </div>
-    </div>
-  </nav>
- 
-
   <div class="row">
     <div class="col-md-1"></div>
-    <div class="col-12 col-md-5">
+    <div class="col-12 col-md-4">
      <div class="container">
       <div class="row">
         <div class="container"> 
@@ -50,23 +35,28 @@
 
         <div class="row">
           <div class="col-1"></div>
-          <h5 class="col-10 col-md-10 text-center">TP Finder helps locate stores in your area that currently have toilet paper in stock. We verify our sources so we can give you the most accurate and up-to-date metrics on tp stock.</h5>
+          <h5 class="col-10 col-md-10 text-center mt-3">TP Finder helps locate stores in your area that currently have toilet paper in stock. We verify our sources so we can give you the most accurate and up-to-date metrics on tp stock.</h5>
           <div class="col-1 col-md-2"></div>
         </div>
 
-        <div class="row">
-          <div class="col-12 col-md-10 text-center mapbutton">
-            <a href="/map">
-              <img src="img/cute-tp.png" class="cute-tp">
-            </a>
-          </div> 
-          <div class="col-md-2"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-10 text-center mapbutton">
+              <a href="/map">
+                <img src="img/cute-tp.png" class="cute-tp">
+              </a>
+            </div> 
+            <div class="col-md-2"></div>
+          </div>
         </div>
-
-        <div class="row">
-          <h3 class="col-12 col-md-10 text-center cute-txt">Click Me!</h3>
-          <div class="col-md-2"></div>
+        
+        <div class="container">
+          <div class="row">
+            <h3 class="col-12 col-md-10 text-center cute-txt">Click Me!</h3>
+            <div class="col-md-2"></div>
+          </div>
         </div>
+        
 
       </div>
     </div>
@@ -79,9 +69,6 @@
 
   <!-- ======================================================== Testimonials============================================================================== -->
 
-    {{!-- <div class="text-center">
-      <h2 class="text-center">~Testimonials~</h2>
-    </div> --}}
 
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
@@ -93,41 +80,42 @@
       </ol>
       <div class="carousel-inner">
 
-        <div class="carousel-item active center mt-5">
+        <div class="carousel-item active center mt-4">
           <img class="d-block rounded mx-auto rounded-circle" src="img/fat-guy.jpg" alt="First slide" style="width:200px;height:200px;">
           <blockquote class="">
-            <p class="mx-auto text-center">I was terrified I wouldn't have enough toilet paper during quarantine. But TP finder helped alleviate that fear.</p>
-            <footer class="mx-auto text-center blockquote-footer">Jane Doe</footer>
+            <p class="mx-auto text-center">Toilet paper is how I lure in the ladies.</p>
+            <footer class="mx-auto text-center blockquote-footer">Sexy Fat Guy</footer>
           </blockquote>
         </div>
-        <div class="carousel-item mt-5">
-          <img class="d-block rounded mx-auto rounded-circle" src="img/desperate-man-tp.jpg" alt="Second slide" style="width:200px;height:200px;">
+         <div class="carousel-item mt-4">
+          <img class="d-block rounded mx-auto rounded-circle" src="img/gun-man.jpg" alt="Second slide" style="width:200px;height:200px;">
           <blockquote class="">
-            <p class="mx-auto text-center">I was terrified I wouldn't have enough toilet paper during quarantine. But TP finder helped alleviate that fear.</p>
-            <footer class="mx-auto text-center blockquote-footer">Jane Doe</footer>
-          </blockquote>
-        </div>
-        <div class="carousel-item mt-5">
-          <img class="d-block rounded mx-auto rounded-circle" src="img/wall-of-tp.jpg" alt="Third slide" style="width:200px;height:200px;">
-          <blockquote class="">
-            <p class="mx-auto text-center">I was terrified I wouldn't have enough toilet paper during quarantine. But TP finder helped alleviate that fear.</p>
-            <footer class="mx-auto text-center blockquote-footer">Jane Doe</footer>
-          </blockquote>
-        </div>
-        <div class="carousel-item mt-5">
-          <img class="d-block rounded mx-auto rounded-circle" src="img/final-boss-granny.jpg" alt="Fourth slide" style="width:200px;height:200px;">
-          <blockquote class="">
-            <p class="mx-auto text-center">I was terrified I wouldn't have enough toilet paper during quarantine. But TP finder helped alleviate that fear.</p>
-            <footer class="mx-auto text-center blockquote-footer">Final Boss Granny</footer>
-          </blockquote>
-        </div>
-        <div class="carousel-item mt-5">
-          <img class="d-block rounded mx-auto rounded-circle" src="img/gun-man.jpg" alt="Fifth slide" style="width:200px;height:200px;">
-          <blockquote class="">
-            <p class="mx-auto text-center">At one point, I was so desperate for toilet paper I was prepared to give my LIFE to protect it. Now thanks to TP finder, I only sleep with one gun instead of my usual two guns and a machette.</p>
+            <p class="mx-auto text-center">They can take my life, but they won't take my toilet paper!</p>
             <footer class="mx-auto text-center blockquote-footer">Crazy Gun Guy</footer>
           </blockquote>
         </div>
+        <div class="carousel-item mt-4">
+          <img class="d-block rounded mx-auto rounded-circle" src="img/wall-of-tp.jpg" alt="Third slide" style="width:200px;height:200px;">
+          <blockquote class="">
+            <p class="mx-auto text-center">My house is made completely out of toilet paper</p>
+            <footer class="mx-auto text-center blockquote-footer">TP House Lady</footer>
+          </blockquote>
+        </div>
+        <div class="carousel-item mt-4">
+          <img class="d-block rounded mx-auto rounded-circle" src="img/final-boss-granny.jpg" alt="Fourth slide" style="width:200px;height:200px;">
+          <blockquote class="">
+            <p class="mx-auto text-center">My great-great-great-grandchildren woun't have enough toilet paper!</p>
+            <footer class="mx-auto text-center blockquote-footer">Final Boss Granny</footer>
+          </blockquote>
+        </div>
+          <div class="carousel-item mt-4">
+          <img class="d-block rounded mx-auto rounded-circle" src="img/desperate-man-tp.jpg" alt="Fifth slide" style="width:200px;height:200px;">
+          <blockquote class="">
+            <p class="mx-auto text-center">All I eat is beans and coffee, so I NEED tons of toilet paper</p>
+            <footer class="mx-auto text-center blockquote-footer">Anxious Guy</footer>
+          </blockquote>
+        </div>
+       
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -142,9 +130,8 @@
 
 
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar4+76PVCmYl" crossorigin="anonymous"></script>
   <script src="js/geo.js"></script>
 </body>
 </html>

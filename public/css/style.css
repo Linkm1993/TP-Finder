@@ -25,25 +25,32 @@ body {
 } 
 
 nav {
- font-size: 2.25rem;
+ font-size: 1.5rem;
 }
 
 .nav-item {
-  margin-left: 25px;
+  margin-left: 15px;
 }
 
 h1 {
   margin-top: 60px;
-  font-size: 8rem;
+  font-size: 6rem;
   margin-bottom: 30px;
 }
 
+h2 {
+  margin-top: 60px;
+  font-size: 3rem;
+}
+
 h3 {
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 h5 {
- font-size: 2.25rem;
+ font-size: 1.1rem;
+ font-family: 'Thasadith', sans-serif;
+ font-weight: 700;
 }
 
 .cute-tp {
@@ -78,7 +85,24 @@ h5 {
   color: #725334 !important;
 }
 
+label, p, input, .passport-submit {
+  font-family: 'Thasadith', sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+}
 
+.passport-submit, blockquote {
+  font-size: 1rem !important;
+}
+
+
+blockquote > footer {
+  font-size: 1.25rem !important;
+}
+
+.summary {
+
+}
 
 
 /*================================================ Carousel====================================================================== */
@@ -98,7 +122,7 @@ h5 {
 
 
 blockquote > p{
-  width: 80%;
+  width: 90%;
 }
 
 blockquote {
