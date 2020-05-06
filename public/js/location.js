@@ -1,12 +1,20 @@
-var map, addresses, datasource, popup, fullTP, results = [];
-var featuresTEST = [];
+var map, addresses, addressesHalf, addressesEmpty, datasource, popup, fullTP,
+results = [];
+resultsHalf = [];
+resultsEmpty = [];
+var featuresFULL = [];
+var featuresHALF = [];
+var featuresEMPTY = [];
+//var inventoryAmt = [];
 var searchOptions = {
    view: 'Auto',
    limit: 1 
 };
 var start, end, isBusy = false;
-
-var addresses = featuresTEST;
+//var inventoryAmt = inventoryLevel;
+var addresses = featuresFULL;
+var addressesHalf = featuresHALF;
+var addressesEmpty = featuresEMPTY;
 //GET INFORMATION FROM SQL DATABASE
 $.get("/api/stores", function(storeDataLogs) {
     storesinfo = storeDataLogs;
@@ -15,12 +23,23 @@ $.get("/api/stores", function(storeDataLogs) {
     storesinfo.forEach(obj => {
         uniqueTag = obj.id;
         storeAddress = obj.store_address;
+        storeInventory = obj.availability;
         existingStore = obj.longlat;
-        featuresTEST.push(storeAddress)
+        //inventoryLevel.push(storeInventory)
+        if(storeInventory === 2){
+            featuresFULL.push(storeAddress);
+            }
+        if(storeInventory === 1){
+            featuresHALF.push(storeAddress);
+            }
+        if(storeInventory === 0){
+            featuresEMPTY.push(storeAddress);
+            }
+        
     ;
-    })})
-    console.log(featuresTEST)
-    
+    })
+})
+  
 function GetMap(){
 
    //Instantiate a map object
@@ -37,7 +56,9 @@ function GetMap(){
    
    var pipeline = atlas.service.MapsURL.newPipeline(new atlas.service.SubscriptionKeyCredential(atlas.getSubscriptionKey()));
    searchURL = new atlas.service.SearchURL(pipeline);
-   geoURL = new atlas.service.SearchURL(pipeline);
+   geoURL = new atlas.service.SearchURL(pipeline); // FOR FULL TP
+   geoURLHALF = new atlas.service.SearchURL(pipeline); // FOR HALF TP
+   geoURLEMPTY = new atlas.service.SearchURL(pipeline); // FOR EMPTY TP
    //Wait until the map resources are ready.
    map.events.add('ready', function() {
       
@@ -63,6 +84,7 @@ function GetMap(){
   datasource = new atlas.source.DataSource();
   map.sources.add(datasource);
       
+
   //Add a layer for rendering point data.
   map.imageSprite.add('question-tp', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/question-tp.png');
   var resultLayer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -80,12 +102,13 @@ function GetMap(){
   //map.layers.add(userSpot);
   map.layers.add(resultLayer);
   popup = new atlas.Popup();
-
   //Add a mouse over event to the result layer and display a popup when this event fires.
     map.events.add('click', resultLayer, showPopup);
+
+//=============  toilet paper inventory IMAGES ==========//
+// FULL INVENTORY
     geoSource = new atlas.source.DataSource();
     map.sources.add(geoSource);
-//Add a layer for rendering data.
     map.imageSprite.add('tp-full', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-full.png');
     var tpFound = new atlas.layer.SymbolLayer( geoSource,null, {
     iconOptions: {
@@ -94,52 +117,101 @@ function GetMap(){
         size: 0.4,
         allowOverlap: true
     }
-
-});
+    });
         map.layers.add(tpFound);
-
+// HALF INVENTORY
+geoHalf = new atlas.source.DataSource();
+map.sources.add(geoHalf);
+map.imageSprite.add('tp-half', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-half.png');
+var tpHalf = new atlas.layer.SymbolLayer( geoHalf,null, {
+iconOptions: {
+    image: 'tp-half',
+    anchor: 'center',
+    size: 0.4,
+    allowOverlap: true
+}
+});
+    map.layers.add(tpHalf);
+    popup = new atlas.Popup();
+    //Add a mouse over event to the result layer and display a popup when this event fires.
+      map.events.add('click', tpHalf, showPopup);
+// EMPTY INVENTORY
+geoEmpty = new atlas.source.DataSource();
+map.sources.add(geoEmpty);
+map.imageSprite.add('tp-empty', 'https://cdn.shopify.com/s/files/1/0251/2525/7269/files/tp-empty.png');
+var tpEmpty = new atlas.layer.SymbolLayer( geoEmpty,null, {
+iconOptions: {
+    image: 'tp-empty',
+    anchor: 'center',
+    size: 0.4,
+    allowOverlap: true
+}
+});
+    map.layers.add(tpEmpty);
+    popup = new atlas.Popup();
+    //Add a mouse over event to the result layer and display a popup when this event fires.
+      map.events.add('click', tpEmpty, showPopup);
 
    });
-    //map.layers.add(new atlas.layer.BubbleLayer(geoSource));
-    async function parallelGeocode() {
-       var requests = [];
+//=============  END toilet paper inventory IMAGES ==========//
 
-       //Create the request promises.
-       for (var i = 0; i < addresses.length; i++) {
-           requests.push(geoURL.searchAddress(atlas.service.Aborter.timeout(10000), addresses[i], searchOptions));
-       }
+//============= START toilet paper inventory ROUTING ==========//
+async function parallelGeocode() {
+    var requests = [];
+    var requestsHALF = [];
+    var requestsEMPTY = [];
 
-       //Process the promises in parallel.
-       var responses = await Promise.all(requests);
+    //FULL TP Create the request promises.
+    for (var i = 0; i < addresses.length; i++) {
+        requests.push(geoURL.searchAddress(atlas.service.Aborter.timeout(10000), addresses[i], searchOptions));
+    }
+    //HALF TP Create the request promises.
+    for (var i = 0; i < addressesHalf.length; i++) {
+        requestsHALF.push(geoURLHALF.searchAddress(atlas.service.Aborter.timeout(10000), addressesHalf[i], searchOptions));
+    }
+    //EMPTY TP Create the request promises.
+    for (var i = 0; i < addressesEmpty.length; i++) {
+        requestsEMPTY.push(geoURLEMPTY.searchAddress(atlas.service.Aborter.timeout(10000), addressesEmpty[i], searchOptions));
+    }
+    //FUll TP Process the promises in parallel.
+    var responses = await Promise.all(requests);
+    //Some TP Process the promises in parallel.
+    var responsesHalf = await Promise.all(requestsHALF);
+    //No TP Process the promises in parallel.
+    var responsesEmpty = await Promise.all(requestsEMPTY);
+    //Extract the GeoJSON feature results.
+    responses.forEach(r => {
+        var fc = r.geojson.getFeatures();
+        if (fc.features.length > 0) {
+            results.push(fc.features[0]);
+        }
+    });
+    //Extract the GeoJSON feature results.
+    responsesHalf.forEach(r => {
+        var fc = r.geojson.getFeatures();
+        if (fc.features.length > 0) {
+            resultsHalf.push(fc.features[0]);
+        }
+    });
+    //Extract the GeoJSON feature results.
+    responsesEmpty.forEach(r => {
+        var fc = r.geojson.getFeatures();
+        if (fc.features.length > 0) {
+            resultsEmpty.push(fc.features[0]);
+        }
+    });
+    //Done.
+    endSearch();
+}
+function endSearch() {
+    end = window.performance.now();
+    geoSource.setShapes(results);
+    geoHalf.setShapes(resultsHalf);
+    geoEmpty.setShapes(resultsEmpty);
+    isBusy = false;
+}
 
-       //Extract the GeoJSON feature results.
-       responses.forEach(r => {
-           var fc = r.geojson.getFeatures();
-
-           if (fc.features.length > 0) {
-               results.push(fc.features[0]);
-           }
-       });
-
-       //Done.
-       endSearch();
-   }
-
-
-   function endSearch() {
-       end = window.performance.now();
-       geoSource.setShapes(results);
-       isBusy = false;
-   }
-
-   function getSearchOptionsQueryParams() {
-       //Creates a formatted key-value pair query string from a json object.
-       return Object.keys(searchOptions).map(function (key) {
-           return key + '=' + encodeURIComponent(searchOptions[key]);
-       }).join('&');
-   }
-
-
+//============= END full toilet paper inventory ==========//
    // Latitude & Longitude are provided by the 'map.js' script for geolocation function
    var query =  'grocery-store';
    var radius = 9000;
@@ -181,7 +253,7 @@ function GetMap(){
           store_address = storeResponse.address.freeformAddress;
           store_Long = position[0];
           store_Lat = position[1];
-        //   store_Inventory = 1;
+          store_Inventory = 3;
           console.log("address: "+ store_address + "store ID: " +store_ID + ", store Name: " + store_Name + " ,longitude: " + store_Long)
       }
       //=== end of custom sql code
@@ -191,7 +263,6 @@ function GetMap(){
        <div style="padding:5px">
        <div><b>${p.poi.name}</b></div>
        <div>${p.address.freeformAddress}</div>
-       <div>${position[1]}, ${position[0]}</div>
      </div>`
          ;
   
@@ -209,7 +280,7 @@ function GetMap(){
            store_name: p.poi.name,
            store_address: p.address.freeformAddress,
              uniqueID: store_ID,
-            //  availability: store_Inventory,
+             availability: store_Inventory,
              longlat : store_Long + ","+ store_Lat
            };
            $.ajax({
