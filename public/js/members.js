@@ -5,3 +5,22 @@ $(document).ready(function() {
     $(".member-name").text(data.email);
   });
 });
+
+function submitTP() {
+  var radioValue = $("input[name='tp-status']:checked").val();
+  var storeID = $("input[name='storeID']").val();
+  console.log("you chose"+ " " + radioValue);
+  console.log(storeID);
+  sendTPStatus(storeID, radioValue);
+};
+
+function sendTPStatus(storeID, radioValue) {
+  $.ajax({
+    type: "POST",
+    url: "/api/status",
+    data: {
+      storeID: storeID,
+      radioValue: radioValue
+    }
+  });
+}

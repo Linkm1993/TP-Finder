@@ -5,49 +5,6 @@
         <span class="store-container"></span>
     <!-- ======================================================================================================================================== -->
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle" data-storeID="{{p.id}}">How much toilet paper did you see on the shelves at {{p.poi.name}}?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body container">
-        <!-- Radio buttons -->
-        <form name="radio-buttons">
-          <div class="row">
-            <label class="col">
-              <input type="radio" name="tp-status" value="0">
-              <img class="col" src="img/empty-roll.PNG" alt="no toilet paper">
-            </label>
-            
-            <label class="col">
-              <input type="radio" name="tp-status" value="1">
-              <img class="col" src="img/toilet-paper.svg" alt="moderate amount of toilet paper">
-            </label>
-
-            <label class="col">
-              <input type="radio" name="tp-status" value="2">
-              <img class="col" src="img/tower-of-tp.PNG" alt="tons of toilet paper">
-            </label>
-
-            <!-- Left as default selected radio button incase user doesn't select the options above. So we can identify junk in our db -->
-            <label>
-              <input type="radio" name="tp-status" value="3" checked>
-            </label>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="submit-button">Submit</button>
-      </div>
-    </div>
-  </div>
-</div>
 
     <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
