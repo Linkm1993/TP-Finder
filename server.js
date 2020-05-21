@@ -2,6 +2,7 @@
 var express = require("express");
 var session = require("express-session");
 var exphbs = require("express-handlebars");
+var compression = require("compression");
 // Requiring passport as we've configured it
 require('dotenv').config();
 var passport = require("./config/passport");
@@ -19,10 +20,12 @@ var db = require("./models");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
+app.use(compression());
 
 // handlebars
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
 
 // We need to use sessions to keep track of our user's login status
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
