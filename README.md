@@ -2,7 +2,7 @@
 
 Full-stack app used to track toilet paper supplies in local stores during Covid-19 pandemic. Utilizing a SQL Database to store crowd-sourced user input, the app generates a map with clear visual markers displaying the toilet paper stock in the user's surrounding area.
 
-## [Deployed App](vast-sierra-58831.herokuapp.com)
+## [Deployed App](https://shrouded-sierra-79930.herokuapp.com/)
 ***
 
 ## Table of Contents
